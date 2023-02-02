@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <!-- Header -->
                     <headerComponent />
 
                     <div class="card-body">
@@ -27,6 +28,7 @@
                             </div>
                         </div>
 
+                        <!-- Map ที่แสดงก่อนหน้า รายการร้าน -->
                         <div v-if="showMap == true" class="row m-0 w-100">
                             <GmapMap :center="center" :zoom="14" map-style-id="roadmap" :options="mapOptions"
                                 style="width: 100%; height: 700px" ref="mapRef">
@@ -83,6 +85,7 @@
             </div>
         </div>
 
+        <!-- Modal สำหรับโชว์รายละเอียดร้านค้า -->
         <b-modal id="detailModal" size="lg" centered hide-header hide-footer hide-header-close>
             <div class="modal-header">
                 <div class="row">
@@ -229,6 +232,7 @@ export default {
             this.dataList = [];
         },
 
+        // เรียกรายการร้าน
         async getLocationList() {
             this.$isLoading(true)
 
@@ -254,6 +258,7 @@ export default {
 
         },
 
+        // ตั้งค่า พื้นที่ที่จะแสดง, ปักหมุด
         setMapFunction(data) {
             var mark = [];
             var center = {};
@@ -274,6 +279,7 @@ export default {
 
         },
 
+        // เรียกรายละเอียดพื้นที่ ตอนที่ user กดที่ปุ่มค้นหา
         async viewDetailFunction(place_id) {
             this.$isLoading(true)
             var oo = this;
@@ -295,6 +301,7 @@ export default {
             this.$isLoading(false)
         },
 
+        // ใช้สำหรับเช็กว่า user กดที่หมุดไหน แล้วแสดงสีที่รายการร้าน
         viewShowDataDetailFunction(place_id) {
             var dataList = this.dataList;
 

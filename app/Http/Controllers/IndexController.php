@@ -20,6 +20,7 @@ class IndexController extends Controller
         return view('page.index',$return);
     }
 
+    // Api สำหรับเรียกรายการร้านอาหาร
     public function getLocationList(Request $request){
         $textSearch = $request->textSearch;
         $type = $request->type;
@@ -50,6 +51,7 @@ class IndexController extends Controller
         return json_encode($return);
     }
 
+    // แปลงลิ้งค์รูปที่ได้จาก google map api เป็น base64
     function link_to_image($image_link)
     {
         // $filetype = substr($image_link, -3);
@@ -59,6 +61,7 @@ class IndexController extends Controller
         return  $b64image;
     }
 
+    // Api เรียกรายละเอียดของสถานที่นั้นๆ
     public function getDetailData(Request $request){
         $textSearch = $request->textSearch;
         $type = $request->type;
@@ -97,7 +100,7 @@ class IndexController extends Controller
         return json_encode($return);
     }
 
-
+    // แปลงรูปเป็นไฟล์ text เก็บไว้ใน /uploads/json/ ใช้ชื่อตาม place_id สำหรับเก็บแคช
     public function getImageAndCacheFile($photoAr,$place_id){
         $fileType = '.txt';
         try {
