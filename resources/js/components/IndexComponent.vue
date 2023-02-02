@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-lg-9 col-sm-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="textSearch" v-model="textSearch">
+                                    <input type="text" class="form-control" id="textSearch" v-model="textSearch" @keyup="searchKeyFunction()">
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-12">
@@ -223,6 +223,10 @@ export default {
             this.textSearch = this.fixTextSearch;
 
             this.searchFunction();
+        },
+
+        searchKeyFunction() {
+            this.dataList = [];
         },
 
         async getLocationList() {
